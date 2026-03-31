@@ -1,11 +1,9 @@
 import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(req) {
   try {
-    // Legge il body JSON
     const { message } = await req.json();
 
-    // Recupera API key da variabile d'ambiente
     const apiKey = process.env.OPENAI_API_KEY;
 
     if (!apiKey) {
@@ -15,23 +13,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // --- LOGICA API (qui aggiungi il tuo codice) ---
-    // Esempio:
-    // const result = await fetch("https://api.openai.com/v1/chat/completions", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${apiKey}`,
-    //   },
-    //   body: JSON.stringify({
-    //     model: "gpt-4o-mini",
-    //     messages: [{ role: "user", content: message }],
-    //   }),
-    // });
-    //
-    // const data = await result.json();
-
-    // Risposta base
     return NextResponse.json({
       ok: true,
       received: message,
@@ -43,3 +24,4 @@ export async function POST(req: Request) {
     );
   }
 }
+``
